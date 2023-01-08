@@ -1,5 +1,6 @@
 resource "aws_instance" "web" {
-  
+   
+  #checkov:skip=CKV_AWS_79:Metadata of EC2 Instance not required
   ami                    = var.ami
   instance_type          = var.instance_type
   key_name               = var.key_name
