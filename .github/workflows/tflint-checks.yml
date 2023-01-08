@@ -36,6 +36,6 @@ jobs:
     - name: Init TFLint
       run: tflint --init
       
-# Run tflint command in each directory recursively
+# Run tflint command in each directory recursively # use --force if you want to continue with workflow although errors are there
     - name: Run TFLint
-      run: tflint -f compact --recursive --force 
+      run: tflint -f compact --recursive
