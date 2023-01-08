@@ -1,0 +1,25 @@
+name: Checkov Checks on Terraform Code
+    
+
+# Only trigger, when the build workflow succeeded
+on:
+  workflow_run:
+    workflows: ["Tfsec Checks on Terraform Code"]
+    types:
+      - completed
+      
+permissions: read-all
+      
+jobs:
+  checkov-checks:
+      runs-on: ubuntu-latest
+      steps:
+      
+ # Checkout Repository
+      - name : Check out Git Repository
+        uses: actions/checkout@v2
+      
+# Checkov - Prevent cloud misconfigurations and find vulnerabilities during build-time in infrastructure as code
+      - name: Run Checkov
+        run: |
+           docker run -t -v ${{ github.workspace }}:/tf --workdir /tf bridgecrew/checkov --directory /tf 
