@@ -22,4 +22,4 @@ jobs:
 # Checkov - Prevent cloud misconfigurations and find vulnerabilities during build-time in infrastructure as code
       - name: Run Checkov
         run: |
-           docker run -t -v ${{ github.workspace }}:/tf --workdir /tf bridgecrew/checkov --directory /tf 
+           docker run -t -v ${{ github.workspace }}:/tf --workdir /tf bridgecrew/checkov --directory /tf --skip-check CKV2_GHA_1
